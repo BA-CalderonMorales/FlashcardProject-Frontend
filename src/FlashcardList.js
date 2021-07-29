@@ -8,11 +8,13 @@ export default function FlashcardList({ flashcards }) {
             { flashcards.map(card => {
                 return <Flashcard flashcard={ card } key={ card.id } />
             }) }
-            {/* When react goes to rerender the array of  
+            {
+            /* When react goes to rerender the array of  
                 flashcard components, it will only rerender
                 the ones that will actually change in 
                 the flashcard array. This is why card.id
-                will be passed into Flashcard.js*/}
+                will be passed into Flashcard.js 
+            */}
         </div>
     )
 }
