@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import CollectionList from './Components/CollectionList/CollectionList';
 import './App.css';
-import axios from 'axios';
+// import axios from 'axios';
 
 function App() {
 
@@ -9,7 +9,9 @@ function App() {
 
   return (
     <>
-      <CollectionList collections={ collections} />
+      <div className="container-fluid">
+        <CollectionList collections={ collections} />
+      </div>
     </>
   );
 }
@@ -30,4 +32,3 @@ const SAMPLE_COLLECTIONS = [
 ]
 
 export default App;
-

@@ -1,10 +1,12 @@
 import React from 'react'
-import Flashcard from './Flashcard.js'
 
-const FlashcardList = (props) => {
+const FlashcardList = ({collectionId}) => {
     return ( 
-        <h1>Hello</h1>
-     );
+        <>
+            <h1>{ collectionId }</h1>
+            <h2>Yo</h2>
+        </>
+    );
 }
  
 export default FlashcardList;

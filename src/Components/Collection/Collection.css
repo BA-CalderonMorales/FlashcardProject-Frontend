@@ -1,0 +1,12 @@
+/* .collection {
+    
+} */
+.collection-title {
+    background-color: grey;
+}
+
+.collection-title:hover {
+    background-color: blue;
+    color: white;
+}
+
