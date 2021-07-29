@@ -1,30 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
-import FlashcardList from './FlashcardList.js';
+import CollectionList from './Components/CollectionList/CollectionList';
 import './App.css';
 import axios from 'axios';
 
 function App() {
 
+  const [collections, setCollections] = useState(SAMPLE_COLLECTIONS)
+
   return (
     <>
-      <h1>Hellos</h1>
+      <CollectionList collections={ collections} />
     </>
   );
 }
 
+const SAMPLE_COLLECTIONS = [
+  {
+    id: '1',
+    name: "Here is a Question (1)",
+    likes: "Answer (1)",
+    dislikes: ["A", "B", "C"]
+  },
+  {
+    id: '2',
+    name: "Here is a Question (2)",
+    likes: "Answer (2)",
+    dislikes: ["A", "B", "C"]
+  }
+]
+
 export default App;
 
-// const SAMPLE_FLASHCARDS = [
-//   {
-//     id: '1',
-//     front: "Here is a Question (1)",
-//     back: "Answer (1)",
-//     options: ["A", "B", "C"]
-//   },
-//   {
-//     id: '2',
-//     front: "Here is a Question (2)",
-//     back: "Answer (2)",
-//     options: ["A", "B", "C"]
-//   }
-// ]
