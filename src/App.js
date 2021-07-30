@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import CollectionList from './Components/CollectionList/CollectionList';
 import './App.css';
+import FlashcardList from './Components/FlashcardList/FlashcardList';
 // import axios from 'axios';
 
 function App() {
-
   const [collections, setCollections] = useState(SAMPLE_COLLECTIONS)
 
   return (
     <>
       <div className="container-fluid">
-        <CollectionList collections={ collections} />
+        <CollectionList collections={collections} />
       </div>
     </>
   );
@@ -32,3 +32,16 @@ const SAMPLE_COLLECTIONS = [
 ]
 
 export default App;
+
+// const [count, setCount] = useState(0);
+
+// // Similar to componentDidMount and componentDidUpdate:  
+// useEffect(() => {    
+// // Update the document title using the browser API    
+// document.title = `You clicked ${count} times`;  });
+/* <div>
+    <p>You clicked {count} times</p>
+    <button onClick={() => setCount(count + 1)}>
+    Click me
+    </button>
+</div> */
