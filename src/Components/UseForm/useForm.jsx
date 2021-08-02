@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React, { useState } from 'react';
 
 const useForm = (callback) => {
     // Hook for state variable and function to update state variable.

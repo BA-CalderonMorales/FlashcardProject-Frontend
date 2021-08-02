@@ -9,7 +9,8 @@ function App() {
   const [collections, setCollections] = useState([]) // SAMPLE_COLLECTIONS
   const [collectionId, setCollectionId] = useState(0);
   const [deck, setDeck] = useState([]); // SAMPLE_CARDS
-  const [filteredDeck, setFilteredDeck] = useState([])
+  const [filteredDeck, setFilteredDeck] = useState([]);
+  const [index, setIndex] = useState(0);
   const [isCollectionClicked, setIsCollectionClicked] = useState(false);
   
 
@@ -37,10 +38,30 @@ function App() {
     setFilteredDeck(tempFilteredCards);
   }, [collectionId, deck])
 
+  const previousClicked = () => {
+    /* function: goToPreviousBook */
+    let tempFlashcardPosition = index;
+    tempFlashcardPosition--;
+    if (tempFlashcardPosition < 0) {
+        tempFlashcardPosition = filteredDeck.length;
+    }
+    console.log(tempFlashcardPosition);
+    setIndex(tempFlashcardPosition);
+  }
+
+  const nextClicked = () => {
+      /* function: goToNextBook */
+      let tempFlashcardPosition = index;
+      tempFlashcardPosition++;
+      if (tempFlashcardPosition === filteredDeck.length) {
+          tempFlashcardPosition = 0;    
+      }
+      console.log(tempFlashcardPosition);
+      setIndex(tempFlashcardPosition);
+  }
+
   return (
     <>
-      {console.log(deck)}
-      {console.log(filteredDeck)}
       <Header />
       <div className="container-fluid">
         <div className="row">
@@ -48,7 +69,13 @@ function App() {
             <CollectionList collections={collections} setCollectionId={setCollectionId} setIsCollectionClicked={setIsCollectionClicked}  />
           </div>
           <div className="col col-sm-10 col-md-10 col-lg-10">
-            {isCollectionClicked ? <FlashcardList filteredDeck={filteredDeck} setDeck={setDeck} deck={deck} /> : <></> }
+            {isCollectionClicked ? <FlashcardList 
+              filteredDeck={filteredDeck} 
+              setDeck={setDeck} 
+              deck={deck} 
+              previousClicked={previousClicked} 
+              nextClicked={nextClicked} 
+              index={index} /> : <></> }
           </div>
         </div>
       </div>
