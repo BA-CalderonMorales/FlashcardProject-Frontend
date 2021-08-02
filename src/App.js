@@ -10,7 +10,7 @@ function App() {
   const [collectionId, setCollectionId] = useState(0);
   const [deck, setDeck] = useState([]); // SAMPLE_CARDS
   const [filteredDeck, setFilteredDeck] = useState([]);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0); // Position one in array of filtered deck.
   const [isCollectionClicked, setIsCollectionClicked] = useState(false);
   
 
