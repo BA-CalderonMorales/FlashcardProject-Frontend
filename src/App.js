@@ -13,14 +13,14 @@ function App() {
   
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/all_decks')
+    axios.get('http://127.0.0.1:8000/all_decks/')
     .then(response => {
       setCollections(response.data);
     })
   }, [])
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/all_cards')
+    axios.get('http://127.0.0.1:8000/all_cards/')
     .then(response => {
       let all_cards = response.data
       setDeck(all_cards);
