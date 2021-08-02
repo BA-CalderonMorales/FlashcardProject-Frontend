@@ -11,8 +11,8 @@ const FlashcardList = ({filteredDeck, setDeck, deck}) => {
             
             <div className="container-fluid" id="flashcard-display">
                 {
-                    filteredDeck.map((card) => {
-                        return <Flashcard card={card} key={card.id} />
+                    filteredDeck.map((card, index) => {
+                        return <Flashcard card={card} key={card.id} index={index+1} amountOfCards={filteredDeck.length} />
                     })
                 }
                 <AddFlashcard setDeck={setDeck} deck={deck}/>
