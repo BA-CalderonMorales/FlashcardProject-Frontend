@@ -7,7 +7,7 @@ const CollectionList = (props) => {
     <div className="collection-list">
       { props.collections.map(collection =>{
         return (
-          <div onClick={() => {props.setCollectionId(collection.id)}} key={collection.id}>
+          <div onClick={() => {props.setCollectionId(collection.id); props.setIsCollectionClicked(true)}}  key={collection.id}>
             <Collection collection={collection} />
           </div>
         )
@@ -17,6 +17,3 @@ const CollectionList = (props) => {
 }
  
 export default CollectionList;
-
-
-//props.filterFlashcards()

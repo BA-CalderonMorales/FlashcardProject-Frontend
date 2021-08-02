@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
 
-export default function UseForm({callback}) {
+const useForm = (callback) => {
     // Hook for state variable and function to update state variable.
     const[values, setValues] = useState([]);
 
@@ -29,3 +29,5 @@ export default function UseForm({callback}) {
 
     return { values, handleChange, handleSubmit }
 }
+ 
+export default useForm;

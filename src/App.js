@@ -10,6 +10,7 @@ function App() {
   const [collectionId, setCollectionId] = useState(0);
   const [deck, setDeck] = useState([]); // SAMPLE_CARDS
   const [filteredDeck, setFilteredDeck] = useState([])
+  const [isCollectionClicked, setIsCollectionClicked] = useState(false);
   
 
   useEffect(() => {
@@ -44,10 +45,10 @@ function App() {
       <div className="container-fluid">
         <div className="row">
           <div className="col col-sm-2 col-md-2 col-lg-2">
-            <CollectionList collections={collections} setCollectionId={setCollectionId}  />
+            <CollectionList collections={collections} setCollectionId={setCollectionId} setIsCollectionClicked={setIsCollectionClicked}  />
           </div>
           <div className="col col-sm-10 col-md-10 col-lg-10">
-            <FlashcardList filteredDeck={filteredDeck} />
+            {isCollectionClicked ? <FlashcardList filteredDeck={filteredDeck} /> : <></> }
           </div>
         </div>
       </div>
