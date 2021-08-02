@@ -1,25 +1,31 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import useForm from '../UseForm/useForm'
 import axios from 'axios';
 
-export default function AddFlashcard() {
+export default function AddFlashcard({setDeck, deck}) {
     const { values, handleChange, handleSubmit } = useForm(card_added);
     
     function card_added() {
-        // let data = {
-        //     front_content: values.front_content,
-        //     back_content: values.back_content,
-        //     deck: values.deck
-        // }
         axios.post('http://127.0.0.1:8000/all_cards/', values)
+        values.front_content = ''
+        values.back_content = ''
+        values.deck = ''
         console.log("Card added.");
         console.log(`Confirmation: ${values.front_content}`)
         console.log(`Confirmation: ${values.back_content}`)
         console.log(`Confirmation: ${values.deck}`)
+        
     }
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/all_cards/')
+        .then(response => {
+          let all_cards = response.data
+          setDeck(all_cards);
+        })
+      }, [deck])
     return (
         <>
-
+    {console.log(values)}
             <form onSubmit={handleSubmit}>
                 <label>
                     Front Content: 
@@ -53,10 +59,6 @@ export default function AddFlashcard() {
                 </label>
                 <button submit="submit">Add a Flash Card</button>
             </form>
-            {console.log("Card added.")}
-        {console.log(`Confirmation: ${values.front_content}`)}
-        {console.log(`Confirmation: ${values.back_content}`)}
-        {console.log(`Confirmation: ${values.deck}`)}
         </>
     )
 }

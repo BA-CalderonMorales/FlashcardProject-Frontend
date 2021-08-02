@@ -14,7 +14,7 @@ const useForm = (callback) => {
         setValues(values => ( 
             {
                 ...values, 
-                [event.target.value]: event.target.values
+                [event.target.name]: event.target.value
             } 
         ));
     }

@@ -48,7 +48,7 @@ function App() {
             <CollectionList collections={collections} setCollectionId={setCollectionId} setIsCollectionClicked={setIsCollectionClicked}  />
           </div>
           <div className="col col-sm-10 col-md-10 col-lg-10">
-            {isCollectionClicked ? <FlashcardList filteredDeck={filteredDeck} /> : <></> }
+            {isCollectionClicked ? <FlashcardList filteredDeck={filteredDeck} setDeck={setDeck} deck={deck} /> : <></> }
           </div>
         </div>
       </div>

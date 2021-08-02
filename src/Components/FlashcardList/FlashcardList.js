@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Flashcard from '../Flashcard/Flashcard';
 import AddFlashcard from '../AddFlashcard/addFlashcard';
 
-const FlashcardList = ({filteredDeck}) => {
+const FlashcardList = ({filteredDeck, setDeck, deck}) => {
     // const [addButtonClicked, setAddButtonClicked] = useState(false);
     
     return ( 
@@ -15,7 +15,7 @@ const FlashcardList = ({filteredDeck}) => {
                         return <Flashcard card={card} key={card.id} />
                     })
                 }
-                <AddFlashcard/>
+                <AddFlashcard setDeck={setDeck} deck={deck}/>
             </div>
             
             
