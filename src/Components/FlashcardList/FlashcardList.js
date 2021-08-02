@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import Flashcard from '../Flashcard/Flashcard';
 
-const FlashcardList = ({flashcardArray}) => {
-
-
-    // { collectionId } Primary Key
+const FlashcardList = ({filteredDeck}) => {
     return ( 
         <>
             <div className="container-fluid" id="flashcard-display">
-                <Flashcard />
-                <button>
-                Click me
-                </button>
+                {
+                    filteredDeck.map((card) => {
+                        return <Flashcard card={card} key={card.id} />
+                    })
+                }
             </div>
         </>
     );

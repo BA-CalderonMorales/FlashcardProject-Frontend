@@ -22,22 +22,8 @@ function App() {
     setFilteredDeck(temp)
   }, [collectionId]);
 
-  
-
-  // let filterFlashcards = () => {
-  //     let temp = deck.filter((card)=>{
-  //       if (card.deck_id == collectionId) {
-  //         return card
-  //       }
-  //     })
-  //     setFilteredDeck(temp)
-  //     console.log(filteredDeck);
-  //   }
-//filterFlashcards={filterFlashcards}
-
   return (
     <>
-    {console.log(filteredDeck)}
       <Header />
       <div className="container-fluid">
         <div className="row">
@@ -45,7 +31,7 @@ function App() {
             <CollectionList collections={collections} setCollectionId={setCollectionId}  />
           </div>
           <div className="col col-sm-10 col-md-10 col-lg-10">
-            <FlashcardList/>
+            <FlashcardList filteredDeck={filteredDeck} />
           </div>
         </div>
       </div>
