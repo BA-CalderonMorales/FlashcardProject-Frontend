@@ -38,27 +38,7 @@ function App() {
     setFilteredDeck(tempFilteredCards);
   }, [collectionId, deck])
 
-  const previousClicked = () => {
-    /* function: goToPreviousBook */
-    let tempFlashcardPosition = index;
-    tempFlashcardPosition--;
-    if (tempFlashcardPosition < 0) {
-        tempFlashcardPosition = filteredDeck.length;
-    }
-    console.log(tempFlashcardPosition);
-    setIndex(tempFlashcardPosition);
-  }
-
-  const nextClicked = () => {
-      /* function: goToNextBook */
-      let tempFlashcardPosition = index;
-      tempFlashcardPosition++;
-      if (tempFlashcardPosition === filteredDeck.length) {
-          tempFlashcardPosition = 0;    
-      }
-      console.log(tempFlashcardPosition);
-      setIndex(tempFlashcardPosition);
-  }
+  
 
   return (
     <>
@@ -66,16 +46,15 @@ function App() {
       <div className="container-fluid">
         <div className="row">
           <div className="col col-sm-2 col-md-2 col-lg-2">
-            <CollectionList collections={collections} setCollectionId={setCollectionId} setIsCollectionClicked={setIsCollectionClicked}  />
+            <CollectionList collections={collections} setIndex={setIndex} setCollectionId={setCollectionId} setIsCollectionClicked={setIsCollectionClicked}  />
           </div>
           <div className="col col-sm-10 col-md-10 col-lg-10">
             {isCollectionClicked ? <FlashcardList 
               filteredDeck={filteredDeck} 
-              setDeck={setDeck} 
-              deck={deck} 
-              previousClicked={previousClicked} 
-              nextClicked={nextClicked} 
-              index={index} /> : <></> }
+              setDeck={setDeck}
+              setIndex={setIndex}
+              index={index}
+              deck={deck} /> : <></> }
           </div>
         </div>
       </div>
