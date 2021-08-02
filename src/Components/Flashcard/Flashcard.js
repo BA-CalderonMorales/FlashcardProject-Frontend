@@ -6,7 +6,7 @@ const Flashcard = ({card}) => {
             <div>
                 <p>Front Content: {card.front_content}</p>
                 <p>Back Content: {card.back_content}</p>
-                <p>Deck Id: {card.deck_id}</p>
+                <p>Deck Id: {card.deck}</p>
             </div>
         </>
     );
