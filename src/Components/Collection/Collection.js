@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Collection.css';
-import FlashcardList from '../FlashcardList/FlashcardList'
 
 const Collection = (props) => {
 

@@ -7,8 +7,8 @@ const CollectionList = (props) => {
     <div className="collection-list">
       { props.collections.map(collection =>{
         return (
-          <div onClick={() => {props.setCollectionId(collection.id)}}>
-          <Collection collection={collection} key={collection.id} />
+          <div onClick={() => {props.setCollectionId(collection.id)}} key={collection.id}>
+            <Collection collection={collection} />
           </div>
         )
       })}
