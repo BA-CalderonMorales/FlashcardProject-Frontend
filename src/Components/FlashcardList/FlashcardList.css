@@ -1,0 +1,13 @@
+#flashcard-display{
+  align-items: center;
+  height: 500px;
+  padding-bottom: 5rem;
+}
+
+#previous {
+  padding-top: 5rem;
+}
+
+#next {
+  padding-top: 5rem;
+}

@@ -3,6 +3,7 @@ import Collection from '../Collection/Collection';
 import './CollectionList.css';
 
 const CollectionList = (props) => {
+
   return ( 
     <div className="collection-list">
       { props.collections.map(collection =>{

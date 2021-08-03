@@ -1,12 +1,28 @@
 /* .collection {
     
 } */
-.collection-title {
-    background-color: grey;
+
+
+
+
+.collection {
+    display: flex;
+    height: 15rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: .25rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+    background-color: #fff;
 }
 
-.collection-title:hover {
-    background-color: blue;
+.collection.selected{
+    background-color: black;
     color: white;
+  }
+
+.collection:hover{
+  background-color: grey;
 }
 

@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 import Flashcard from '../Flashcard/Flashcard';
 import AddFlashcard from '../AddFlashcard/addFlashcard';
+import './FlashcardList.css'
 
 const FlashcardList = ({filteredDeck, setDeck, deck, index, setIndex}) => {
     
@@ -10,7 +11,7 @@ const FlashcardList = ({filteredDeck, setDeck, deck, index, setIndex}) => {
         let tempFlashcardPosition = index;
         tempFlashcardPosition--;
         if (tempFlashcardPosition < 0) {
-            tempFlashcardPosition = filteredDeck.length;
+            tempFlashcardPosition = filteredDeck.length -1;
         }
         console.log(tempFlashcardPosition);
         setIndex(tempFlashcardPosition);
@@ -30,19 +31,41 @@ const FlashcardList = ({filteredDeck, setDeck, deck, index, setIndex}) => {
 
     return ( 
         <>
-            <button type="button" onClick={() => previousClicked()}>Previous</button>
-            <div className="container-fluid" id="flashcard-display">
-                {
-                    filteredDeck.length == 0 ? <></> :
-                    <>
-                    <Flashcard card={currentCard} key={currentCard.id} index={index+1} amountOfCards={filteredDeck.length} />
-                    </>
-                    
-                }
-                
+            <div className="container-fluid" >
+                <div className="row">
+                    <div className="col col-sm-12 col-md-2 col-lg-2 d-flex justify-content-center align-items center">
+                        <div className="row" >
+                            <div className="col">
+                                <div id="previous">
+                                <button type="button" onClick={() => previousClicked()}>Previous</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col col-sm-12 col-md-8 col-lg-8 " >
+                        <div id="flashcard-display">
+                            {
+                                filteredDeck.length == 0 ? <></> :
+                                <>
+                                <Flashcard card={currentCard} key={currentCard.id} index={index} amountOfCards={filteredDeck.length} />
+                                </>
+                                
+                            }
+                            <AddFlashcard setDeck={setDeck} deck={deck} />
+                        </div>
+                    </div>
+                    <div className="col col-sm-12 col-md-2 col-lg-2 d-flex justify-content-center align-items center">
+                        <div className="row" >
+                            <div className="col">
+                                <div id="next">
+                                    <button type="button" onClick={() => nextClicked()}>Next</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <AddFlashcard setDeck={setDeck} deck={deck} />
-            <button type="button" onClick={() => nextClicked()}>Next</button>
+            
         </>
     );
 }
