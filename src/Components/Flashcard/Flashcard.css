@@ -1,0 +1,46 @@
+
+​
+.flashcard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: .25rem;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+  background-color: white;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(var(--rotate-y, 0)) 
+  translateY(var(--translate-y, 0));
+  transition: 150ms;
+  cursor: pointer;
+  padding: 1.5rem;
+  border: violet 10px;
+}
+​
+.flashcard:hover {
+  --translate-y: -2px;
+  box-shadow: 0 0 0 5px 2px rgba(0, 0, 0, .5);
+}
+​
+.flashcard .flip {
+  --rotate-y: 180deg;
+}
+​
+.flashcard .front,
+.flashcard .back {
+  position: absolute;
+  padding: 1rem;
+  backface-visibility: hidden;  
+}
+​
+.flashcard .front {
+  left: 0;
+}
+​
+.flashcard .back {
+  transform: rotateY(180deg);
+}
+
+.index {
+  text-align: end;
+}
