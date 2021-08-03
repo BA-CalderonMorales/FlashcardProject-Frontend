@@ -38,7 +38,6 @@ function App() {
     setFilteredDeck(tempFilteredCards);
   }, [collectionId, deck])
 
-  
 
   return (
     <>

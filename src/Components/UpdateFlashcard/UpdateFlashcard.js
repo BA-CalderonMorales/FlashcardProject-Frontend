@@ -1,6 +1,7 @@
 import React from 'react'
 import useForm from '../UseForm/useForm'
 import axios from 'axios';
+import Modal from 'react-modal';
 
 const UpdateFlashcard = (props) => {
   const { values, handleChange, handleSubmit } = useForm(card_updated);
@@ -10,27 +11,62 @@ const UpdateFlashcard = (props) => {
     values.front_content = ''
     values.back_content = ''
     values.deck = ''
+    props.setEditButtonClicked(false);
     console.log("Card added.");
     console.log(`Confirmation: ${values.front_content}`)
     console.log(`Confirmation: ${values.back_content}`)
     console.log(`Confirmation: ${values.deck}`)
     
 }
+    Modal.setAppElement('#root');
+
+// modal-dialog modal-dialog-centered
   return ( 
-    <>
+        <>
+            <Modal
+                isOpen={props.editButtonClicked} // True when coming in. False when closed.
+                onRequestClose={() => props.setEditButtonClicked(false)}
+                style={
+                    {
+                        overlay: {
+                            backgroundColor: 'grey'
+                        },
+                        content: {
+                            position: 'absolute',
+                            top: '40px',
+                            left: '40px',
+                            right: '40px',
+                            bottom: '40px',
+                            border: '1px solid #ccc',
+                            background: '#fff',
+                            overflow: 'auto',
+                            WebkitOverflowScrolling: 'touch',
+                            borderRadius: '4px',
+                            outline: 'none',
+                            padding: '2rem'
+                        }
+                    }
+                }
+            >
+            <h1> Make Changes Here </h1>
             <form onSubmit={handleSubmit}>
-                <label>
-                    Front Content: 
+                <div className="form-group">
+                    <label for="front-content">
+                        Front Content: 
+                    </label>
                     <input 
+                    id="front-content"
                     type="text"
                     name="front_content"
                     onChange={handleChange}
                     value={values.front_content}
                     required={true}
                     />
-                </label>
-                <label>
-                    Back Content: 
+                </div>
+                <div className="form-group">
+                    <label>
+                        Back Content: 
+                    </label>
                     <input 
                     type="text"
                     name="back_content"
@@ -38,9 +74,11 @@ const UpdateFlashcard = (props) => {
                     value={values.back_content}
                     required={true}
                     />
-                </label>
-                <label>
-                    Deck ID: 
+                </div>
+                <div className="form-group">
+                    <label>
+                        Deck ID: 
+                    </label>
                     <input 
                     type="text"
                     name="deck"
@@ -48,9 +86,10 @@ const UpdateFlashcard = (props) => {
                     value={values.deck}
                     required={true}
                     />
-                </label>
-                <button submit="submit">Edit a Flash Card</button>
+                </div>
+                <button type="submit" className="btn btn-primary">Edit</button>
             </form>
+            </Modal>        
         </>
    );
 }
