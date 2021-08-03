@@ -9,27 +9,35 @@ const Flashcard = ({card, index, amountOfCards}) => {
     return ( 
         <>
         <div className="row">
-            <div className="col-10"></div>
-            <div className="col-2">
-                <div className="index">{index + 1}/{amountOfCards}</div>
-            </div>
-        </div>
-        <div className="row">
             <div className="col-12 d-flex justify-content-center">
                 <div className={ `flashcard ${flip ? 'flip' : '' }` } 
                 onClick={ () => setFlip(!flip)} 
                 >
+                    
                     {flip ? 
-                    <div id="back" >
-                        { card.back_content }
-                    </div>
+                        <div className="random"> 
+                            <div id="back" >
+                                { card.back_content }
+                                
+                            </div>
+                            <div className="index" >{index}/{amountOfCards}</div>
+                        </div>
+                    
+                    
                     :
-                    <div id="front" >
-                        { card.front_content }
+                    <div className="random"> 
+                        <div id="front" >
+                            { card.front_content }
+                        </div>
+                        <div className="index" >{index}/{amountOfCards}</div>
                     </div>
                     }    
+                   
                 </div>
+                
             </div>
+            
+            
         </div>
         <div className="row">
             <div className="col-10"></div>

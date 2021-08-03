@@ -45,8 +45,8 @@ const FlashcardList = ({filteredDeck, setDeck, deck, index, setIndex}) => {
                     <div className="col col-sm-12 col-md-8 col-lg-8 " >
                         {
                             filteredDeck.length == 0 ? <></> :
-                            <div className="row" id="flashcard-display">
-                                <Flashcard card={currentCard} key={currentCard.id} index={index} amountOfCards={filteredDeck.length} />
+                            <div>
+                                <Flashcard card={currentCard} index={index} amountOfCards={filteredDeck.length} key={currentCard.id}/>
                             </div>
                         }
                         <AddFlashcard setDeck={setDeck} deck={deck} />
