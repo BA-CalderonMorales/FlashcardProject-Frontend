@@ -10,7 +10,7 @@ const FlashcardList = ({filteredDeck, setDeck, deck, index, setIndex}) => {
         let tempFlashcardPosition = index;
         tempFlashcardPosition--;
         if (tempFlashcardPosition < 0) {
-            tempFlashcardPosition = filteredDeck.length;
+            tempFlashcardPosition = filteredDeck.length -1;
         }
         console.log(tempFlashcardPosition);
         setIndex(tempFlashcardPosition);
@@ -35,7 +35,7 @@ const FlashcardList = ({filteredDeck, setDeck, deck, index, setIndex}) => {
                 {
                     filteredDeck.length == 0 ? <></> :
                     <>
-                    <Flashcard card={currentCard} key={currentCard.id} index={index+1} amountOfCards={filteredDeck.length} />
+                    <Flashcard card={currentCard} key={currentCard.id} index={index} amountOfCards={filteredDeck.length} />
                     </>
                     
                 }

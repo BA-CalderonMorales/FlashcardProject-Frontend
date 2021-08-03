@@ -11,7 +11,7 @@ const Flashcard = ({card, index, amountOfCards}) => {
             <p>Back Content: {card.back_content}</p>
             <p>Front Content: {card.front_content}</p>
             <p>Deck Id: {card.deck}</p>
-            <p>{index}/{amountOfCards}</p>
+            <p>{index + 1}/{amountOfCards}</p>
             <button onClick={() => setEditButtonClicked(true)} >Edit</button>
             {editButtonClicked ? <UpdateFlashcard card_id={card.id} /> : <> </>}
         </>  
