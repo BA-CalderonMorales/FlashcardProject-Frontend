@@ -1,0 +1,14 @@
+.collection-list {
+    display: block;
+    position: relative;
+    height: 35rem;
+    width: 15rem;
+    overflow:scroll;
+    overflow-x:hidden;
+}
+
+.add-collection {
+    position: relative;
+    height: auto;
+    width: 40rem;
+}

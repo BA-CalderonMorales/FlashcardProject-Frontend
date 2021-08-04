@@ -20,7 +20,7 @@ function App() {
     .then(response => {
       setCollections(response.data);
     })
-  }, [])
+  }, [collections])
 
   useEffect(() => {
         // Retrieves all the cards in the Flashcard Collection API database, regardless of
