@@ -3,12 +3,12 @@ import DefaultFlashcard from '../DefaultFlashcard/DefaultFlashcard';
 import Flashcard from '../Flashcard/Flashcard';
 import './FlashcardList.css'
 
-const FlashcardList = ({filteredDeck, index, setIndex, cardDidMount}) => {
+const FlashcardList = ({filteredDeck, index, setIndex, cardDidMount, collectionId}) => {
 
     const DefaultCard= {
         front_content: "test",
         back_content: "hello",
-        deck: 3
+        deck: collectionId
     }
 
     const previousClicked = () => {

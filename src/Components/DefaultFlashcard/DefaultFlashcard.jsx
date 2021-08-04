@@ -18,7 +18,7 @@ const DefaultFlashcard = (props) => {
                     {addButtonClicked ? <></> : <button className="btn" onClick={() => setAddButtonClicked(true)}><i class="fas fa-plus fa-5x" ></i>
                     
                   </button>}
-                {addButtonClicked ? <AddFlashcard cardDidMount={props.cardDidMount} addButtonClicked={addButtonClicked} setAddButtonClicked={setAddButtonClicked} /> : <> </> }
+                {addButtonClicked ? <AddFlashcard deckId={props.card.deck} cardDidMount={props.cardDidMount} addButtonClicked={addButtonClicked} setAddButtonClicked={setAddButtonClicked} /> : <> </> }
                 </div>
             </div>
         </div> 

@@ -7,10 +7,10 @@ export default function AddFlashcard(props) {
     const { values, handleChange, handleSubmit } = useForm(card_added);
 
     function card_added() {
+        values.deck = props.deckId
         axios.post('http://127.0.0.1:8000/all_cards/', values)
         values.front_content = ''
         values.back_content = ''
-        values.deck = ''
         props.setAddButtonClicked(false);
         props.cardDidMount()
         console.log("Card added.");
@@ -22,7 +22,6 @@ export default function AddFlashcard(props) {
     Modal.setAppElement('#root');
       return (
         <>
-        {console.log(props.deckId)}
             <Modal
                 isOpen={props.addButtonClicked} // True when coming in. False when closed.
                 onRequestClose={() => props.setAddButtonClicked(false)}
@@ -74,7 +73,7 @@ export default function AddFlashcard(props) {
                     required={true}
                     />
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label>
                     Deck ID:
                     </label> 
@@ -82,10 +81,11 @@ export default function AddFlashcard(props) {
                     type="text"
                     name="deck"
                     placeholder={props.deckId}
+                    onChange={handleChange}
                     value={values.deck}
-                    disabled={true}
+                    required={false}
                     />
-                </div>
+                </div> */}
                     <button submit="submit" className="btn btn-primary">Add a Flash Card</button>
                 </form>
             </Modal>

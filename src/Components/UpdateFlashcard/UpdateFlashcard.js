@@ -10,13 +10,14 @@ const UpdateFlashcard = (props) => {
     const { values, handleChange, handleSubmit } = useForm(card_updated);
 
     function card_updated() {
+    values.deck = props.deckId
     // Updates a flashcard in the database. Used in conjunction with useForm.
     axios.put(`http://127.0.0.1:8000/all_cards/${props.card_id}`, values)
     values.front_content = ''
     values.back_content = ''
-    values.deck = ''
+    props.cardDidMount()
     props.setEditButtonClicked(false);
-    console.log("Card added.");
+    console.log("Card updated.");
     console.log(`Confirmation: ${values.front_content}`)
     console.log(`Confirmation: ${values.back_content}`)
     console.log(`Confirmation: ${values.deck}`)
@@ -77,7 +78,7 @@ const UpdateFlashcard = (props) => {
                     required={true}
                     />
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label>
                         Deck ID: 
                     </label>
@@ -88,7 +89,7 @@ const UpdateFlashcard = (props) => {
                     value={values.deck}
                     required={true}
                     />
-                </div>
+                </div> */}
                 <button type="submit" className="btn btn-primary">Edit</button>
             </form>
             </Modal>        

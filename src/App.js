@@ -64,7 +64,7 @@ function App() {
             <CollectionList collectionDidMount={collectionDidMount} collections={collections} setIndex={setIndex} setCollectionId={setCollectionId} setIsCollectionClicked={setIsCollectionClicked}  />
           </div>
           <div className="col col-sm-10 col-md-10 col-lg-10">
-            {isCollectionClicked ? <FlashcardList cardDidMount={cardDidMount} filteredDeck={filteredDeck} setDeck={setDeck} setIndex={setIndex} index={index} deck={deck} /> : <></> }
+            {isCollectionClicked ? <FlashcardList collectionId={collectionId} cardDidMount={cardDidMount} filteredDeck={filteredDeck} setDeck={setDeck} setIndex={setIndex} index={index} deck={deck} /> : <></> }
           </div>
         </div>
       </div>
