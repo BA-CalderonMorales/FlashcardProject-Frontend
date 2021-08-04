@@ -3,7 +3,7 @@ import UpdateFlashcard from '../UpdateFlashcard/UpdateFlashcard';
 import AddFlashcard from '../AddFlashcard/addFlashcard';
 import './Flashcard.css'
 
-const Flashcard = ({card, index, amountOfCards, setDeck, deck}) => {
+const Flashcard = ({card, index, amountOfCards}) => {
 
     // 
     const [addButtonClicked, setAddButtonClicked] = useState(false);
