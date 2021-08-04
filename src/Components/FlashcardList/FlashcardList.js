@@ -1,10 +1,8 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React from 'react'
 import Flashcard from '../Flashcard/Flashcard';
-import AddFlashcard from '../AddFlashcard/addFlashcard';
 import './FlashcardList.css'
 
 const FlashcardList = ({filteredDeck, setDeck, deck, index, setIndex}) => {
-    
 
     const previousClicked = () => {
         // Allows a user to go to the previous flashcard in a collection of flashcards.
@@ -46,10 +44,9 @@ const FlashcardList = ({filteredDeck, setDeck, deck, index, setIndex}) => {
                         {
                             filteredDeck.length == 0 ? <></> :
                             <div>
-                                <Flashcard card={currentCard} index={index} amountOfCards={filteredDeck.length} key={currentCard.id}/>
+                                <Flashcard card={currentCard} index={index} amountOfCards={filteredDeck.length} key={currentCard.id} deck={deck} setDeck={setDeck} />
                             </div>
                         }
-                        <AddFlashcard setDeck={setDeck} deck={deck} />
                     </div>
                     <div className="col col-sm-12 col-md-2 col-lg-2 d-flex justify-content-center align-items center">
                         <div className="row" >

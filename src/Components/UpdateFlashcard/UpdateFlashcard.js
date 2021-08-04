@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import useForm from '../UseForm/useForm'
 import axios from 'axios';
 import Modal from 'react-modal';
@@ -20,7 +20,6 @@ const UpdateFlashcard = (props) => {
     console.log(`Confirmation: ${values.front_content}`)
     console.log(`Confirmation: ${values.back_content}`)
     console.log(`Confirmation: ${values.deck}`)
-    
 }
     Modal.setAppElement('#root');
 

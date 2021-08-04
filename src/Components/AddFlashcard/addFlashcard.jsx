@@ -1,36 +1,57 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import useForm from '../UseForm/useForm'
 import axios from 'axios';
+import Modal from 'react-modal';
 
-export default function AddFlashcard({setDeck, deck}) {
+export default function AddFlashcard(props) {
     const { values, handleChange, handleSubmit } = useForm(card_added);
-    
 
     function card_added() {
         axios.post('http://127.0.0.1:8000/all_cards/', values)
         values.front_content = ''
         values.back_content = ''
         values.deck = ''
+        props.setAddButtonClicked(false);
         console.log("Card added.");
         console.log(`Confirmation: ${values.front_content}`)
         console.log(`Confirmation: ${values.back_content}`)
         console.log(`Confirmation: ${values.deck}`)
-        
     }
-    
-    useEffect(() => {
-        axios.get('http://127.0.0.1:8000/all_cards/')
-        .then(response => {
-          let all_cards = response.data
-          setDeck(all_cards);
-        })
-    }, [deck])
-    
+
+    Modal.setAppElement('#root');
       return (
         <>
-            <form onSubmit={handleSubmit}>
-                <label>
+            <Modal
+                isOpen={props.addButtonClicked} // True when coming in. False when closed.
+                onRequestClose={() => props.setAddButtonClicked(false)}
+                style={
+                    {
+                        overlay: {
+                            backgroundColor: 'grey'
+                        },
+                        content: {
+                            position: 'absolute',
+                            top: '40px',
+                            left: '40px',
+                            right: '40px',
+                            bottom: '40px',
+                            border: '1px solid #ccc',
+                            background: '#fff',
+                            overflow: 'auto',
+                            WebkitOverflowScrolling: 'touch',
+                            borderRadius: '4px',
+                            outline: 'none',
+                            padding: '2rem'
+                        }
+                    }
+                }
+            >
+                <h1>Add a Flashcard</h1>
+                <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>
                     Front Content: 
+                    </label>
                     <input 
                     type="text"
                     name="front_content"
@@ -38,9 +59,11 @@ export default function AddFlashcard({setDeck, deck}) {
                     value={values.front_content}
                     required={true}
                     />
-                </label>
-                <label>
+                </div>
+                <div className="form-group">
+                    <label>
                     Back Content: 
+                    </label>
                     <input 
                     type="text"
                     name="back_content"
@@ -48,9 +71,11 @@ export default function AddFlashcard({setDeck, deck}) {
                     value={values.back_content}
                     required={true}
                     />
-                </label>
-                <label>
-                    Deck ID: 
+                </div>
+                <div className="form-group">
+                    <label>
+                    Deck ID:
+                    </label> 
                     <input 
                     type="text"
                     name="deck"
@@ -58,9 +83,10 @@ export default function AddFlashcard({setDeck, deck}) {
                     value={values.deck}
                     required={true}
                     />
-                </label>
-                <button submit="submit">Add a Flash Card</button>
-            </form>
+                </div>
+                    <button submit="submit" className="btn btn-primary">Add a Flash Card</button>
+                </form>
+            </Modal>
         </>
     )
 }

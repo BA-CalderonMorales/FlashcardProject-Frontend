@@ -30,7 +30,7 @@ function App() {
       let all_cards = response.data
       setDeck(all_cards);
     })
-  }, [])
+  }, [deck])
 
   useEffect(() => {
     // Filters the deck of cards based off of the specific deck id associated 
@@ -53,12 +53,7 @@ function App() {
             <CollectionList collections={collections} setIndex={setIndex} setCollectionId={setCollectionId} setIsCollectionClicked={setIsCollectionClicked}  />
           </div>
           <div className="col col-sm-10 col-md-10 col-lg-10">
-            {isCollectionClicked ? <FlashcardList 
-              filteredDeck={filteredDeck} 
-              setDeck={setDeck}
-              setIndex={setIndex}
-              index={index}
-              deck={deck} /> : <></> }
+            {isCollectionClicked ? <FlashcardList filteredDeck={filteredDeck} setDeck={setDeck} setIndex={setIndex} index={index} deck={deck} /> : <></> }
           </div>
         </div>
       </div>

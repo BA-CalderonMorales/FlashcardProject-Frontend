@@ -1,8 +1,12 @@
 import React, {useState, useRef} from 'react'
 import UpdateFlashcard from '../UpdateFlashcard/UpdateFlashcard';
+import AddFlashcard from '../AddFlashcard/addFlashcard';
 import './Flashcard.css'
 
-const Flashcard = ({card, index, amountOfCards}) => {
+const Flashcard = ({card, index, amountOfCards, setDeck, deck}) => {
+
+    // 
+    const [addButtonClicked, setAddButtonClicked] = useState(false);
     
     // Holds the state of whether or not the edit button has been clicked.
     const [editButtonClicked, setEditButtonClicked] = useState(false);
@@ -38,9 +42,15 @@ const Flashcard = ({card, index, amountOfCards}) => {
             </div>
         </div>
         <div className="row">
-            <div className="col-10"></div>
             <div className="col-2">
-                {editButtonClicked ? <></> : <button onClick={() => setEditButtonClicked(true)}>
+                {addButtonClicked ? <></> : <button className="btn btn-primary" onClick={() => setAddButtonClicked(true)}>
+                    Add a Flashcard
+                </button>}
+                {addButtonClicked ? <AddFlashcard addButtonClicked={addButtonClicked} setAddButtonClicked={setAddButtonClicked} /> : <> </> }
+            </div>
+            <div className="col-8"></div>
+            <div className="col-2">
+                {editButtonClicked ? <></> : <button className="btn btn-primary" onClick={() => setEditButtonClicked(true)}>
                     Edit
                 </button>}
                 {editButtonClicked ? <UpdateFlashcard card_id={card.id} editButtonClicked={editButtonClicked} setEditButtonClicked={setEditButtonClicked} /> : <> </>}
@@ -50,5 +60,7 @@ const Flashcard = ({card, index, amountOfCards}) => {
         </>  
     );
 }
- 
+
+// setDeck={setDeck} deck={deck}
+
 export default Flashcard;
