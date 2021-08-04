@@ -1,9 +1,12 @@
 import React, {useState} from 'react';
 import Collection from '../Collection/Collection';
 import './CollectionList.css';
+import AddACollection from '../AddACollection/AddACollection';
 
 const CollectionList = (props) => {
   const [collectionClickedId, setCollectionClickedId] = useState(null);
+  const [addCollectionClicked, setAddCollectionClicked] = useState(false);
+
   return ( 
       <>
       <div className="collection-list">
@@ -16,10 +19,12 @@ const CollectionList = (props) => {
         })}
       </div>
       <div className="add-collection">
+        <button onClick={() => setAddCollectionClicked(true)}>
         Add a Collection
-        {/* {
-          <AddACollection />
-        } */}
+        </button>
+        {
+          addCollectionClicked ? <AddACollection addCollectionClicked={addCollectionClicked} setAddCollectionClicked={setAddCollectionClicked} /> : <></>
+        }
       </div>
       </>
    );
