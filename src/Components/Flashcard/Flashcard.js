@@ -46,7 +46,7 @@ const Flashcard = ({card, index, amountOfCards, cardDidMount}) => {
                 {addButtonClicked ? <></> : <button className="btn btn-primary" onClick={() => setAddButtonClicked(true)}>
                     Add a Card
                 </button>}
-                {addButtonClicked ? <AddFlashcard cardDidMount={cardDidMount} addButtonClicked={addButtonClicked} setAddButtonClicked={setAddButtonClicked} /> : <> </> }
+                {addButtonClicked ? <AddFlashcard deckId={card.deck} cardDidMount={cardDidMount} addButtonClicked={addButtonClicked} setAddButtonClicked={setAddButtonClicked} /> : <> </> }
 
                 {editButtonClicked ? <></> : <button className="btn btn-primary" onClick={() => setEditButtonClicked(true)}>
                     Edit

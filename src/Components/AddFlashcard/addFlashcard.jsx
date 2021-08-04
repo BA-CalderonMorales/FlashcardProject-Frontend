@@ -22,6 +22,7 @@ export default function AddFlashcard(props) {
     Modal.setAppElement('#root');
       return (
         <>
+        {console.log(props.deckId)}
             <Modal
                 isOpen={props.addButtonClicked} // True when coming in. False when closed.
                 onRequestClose={() => props.setAddButtonClicked(false)}
@@ -80,9 +81,9 @@ export default function AddFlashcard(props) {
                     <input 
                     type="text"
                     name="deck"
-                    onChange={handleChange}
+                    placeholder={props.deckId}
                     value={values.deck}
-                    required={true}
+                    disabled={true}
                     />
                 </div>
                     <button submit="submit" className="btn btn-primary">Add a Flash Card</button>
