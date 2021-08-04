@@ -7,7 +7,7 @@ const FlashcardList = ({filteredDeck, setDeck, deck, index, setIndex}) => {
     
 
     const previousClicked = () => {
-        /* function: goToPreviousBook */
+        // Allows a user to go to the previous flashcard in a collection of flashcards.
         let tempFlashcardPosition = index;
         tempFlashcardPosition--;
         if (tempFlashcardPosition < 0) {
@@ -18,8 +18,8 @@ const FlashcardList = ({filteredDeck, setDeck, deck, index, setIndex}) => {
       }
     
       const nextClicked = () => {
-          /* function: goToNextBook */
-          let tempFlashcardPosition = index;
+        // Allows a user to go to the next flashcard in a collection of flashcards.
+        let tempFlashcardPosition = index;
           tempFlashcardPosition++;
           if (tempFlashcardPosition === filteredDeck.length) {
               tempFlashcardPosition = 0;    

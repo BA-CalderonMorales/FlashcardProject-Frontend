@@ -4,9 +4,13 @@ import axios from 'axios';
 import Modal from 'react-modal';
 
 const UpdateFlashcard = (props) => {
-  const { values, handleChange, handleSubmit } = useForm(card_updated);
 
-  function card_updated() {
+    // Destructuring useForm to only use what's needed from it.
+    // values holds all the values from the form used in this rendered form. 
+    const { values, handleChange, handleSubmit } = useForm(card_updated);
+
+    function card_updated() {
+    // Updates a flashcard in the database. Used in conjunction with useForm.
     axios.put(`http://127.0.0.1:8000/all_cards/${props.card_id}`, values)
     values.front_content = ''
     values.back_content = ''
@@ -20,7 +24,6 @@ const UpdateFlashcard = (props) => {
 }
     Modal.setAppElement('#root');
 
-// modal-dialog modal-dialog-centered
   return ( 
         <>
             <Modal

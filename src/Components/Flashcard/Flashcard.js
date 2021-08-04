@@ -3,7 +3,12 @@ import UpdateFlashcard from '../UpdateFlashcard/UpdateFlashcard';
 import './Flashcard.css'
 
 const Flashcard = ({card, index, amountOfCards}) => {
+    
+    // Holds the state of whether or not the edit button has been clicked.
     const [editButtonClicked, setEditButtonClicked] = useState(false);
+
+    // Holds the state of whether the user wants to see the front or back of 
+    // the flashcard.
     const[flip, setFlip] = useState(false);
 
     return ( 
@@ -13,31 +18,24 @@ const Flashcard = ({card, index, amountOfCards}) => {
                 <div className={ `flashcard ${flip ? 'flip' : '' }` } 
                 onClick={ () => setFlip(!flip)} 
                 >
-                    
                     {flip ? 
                         <div className="random"> 
                             <div id="back" >
                                 { card.back_content }
                                 
                             </div>
-                            <div className="index" >{index}/{amountOfCards}</div>
+                            <div className="index" >{index + 1}/{amountOfCards}</div>
                         </div>
-                    
-                    
                     :
                     <div className="random"> 
                         <div id="front" >
                             { card.front_content }
                         </div>
-                        <div className="index" >{index}/{amountOfCards}</div>
+                        <div className="index" >{index + 1}/{amountOfCards}</div>
                     </div>
                     }    
-                   
                 </div>
-                
             </div>
-            
-            
         </div>
         <div className="row">
             <div className="col-10"></div>

@@ -15,6 +15,7 @@ function App() {
   
 
   useEffect(() => {
+    // Retrieves all the collections in the Flashcard Collection API database.
     axios.get('http://127.0.0.1:8000/all_decks/')
     .then(response => {
       setCollections(response.data);
@@ -22,6 +23,8 @@ function App() {
   }, [])
 
   useEffect(() => {
+        // Retrieves all the cards in the Flashcard Collection API database, regardless of
+        // what collection their attached to.
     axios.get('http://127.0.0.1:8000/all_cards/')
     .then(response => {
       let all_cards = response.data
@@ -30,6 +33,8 @@ function App() {
   }, [])
 
   useEffect(() => {
+    // Filters the deck of cards based off of the specific deck id associated 
+    // with the deck (collection) chosen.
     let tempFilteredCards = deck.filter((card) => {
       if (card.deck === collectionId) {
         return card;

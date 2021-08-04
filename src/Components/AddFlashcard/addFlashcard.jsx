@@ -1,10 +1,11 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import useForm from '../UseForm/useForm'
 import axios from 'axios';
 
 export default function AddFlashcard({setDeck, deck}) {
     const { values, handleChange, handleSubmit } = useForm(card_added);
     
+
     function card_added() {
         axios.post('http://127.0.0.1:8000/all_cards/', values)
         values.front_content = ''
@@ -16,14 +17,16 @@ export default function AddFlashcard({setDeck, deck}) {
         console.log(`Confirmation: ${values.deck}`)
         
     }
+    
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/all_cards/')
         .then(response => {
           let all_cards = response.data
           setDeck(all_cards);
         })
-      }, [deck])
-    return (
+    }, [deck])
+    
+      return (
         <>
             <form onSubmit={handleSubmit}>
                 <label>
