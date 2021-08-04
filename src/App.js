@@ -12,7 +12,8 @@ function App() {
   const [filteredDeck, setFilteredDeck] = useState([]);
   const [index, setIndex] = useState(0); // Position one in array of filtered deck.
   const [isCollectionClicked, setIsCollectionClicked] = useState(false);
-  
+  const [cardAdded, setCardAdded] = useState(false);
+  const [collectionAdded, setCollectionAdded] = useState(false);
 
   useEffect(() => {
     // Retrieves all the collections in the Flashcard Collection API database.
@@ -20,7 +21,9 @@ function App() {
     .then(response => {
       setCollections(response.data);
     })
-  }, [collections])
+  }, [cardAdded, collectionAdded])
+
+  
 
   useEffect(() => {
         // Retrieves all the cards in the Flashcard Collection API database, regardless of
@@ -30,7 +33,7 @@ function App() {
       let all_cards = response.data
       setDeck(all_cards);
     })
-  }, [deck])
+  }, [cardAdded, collectionAdded])
 
   useEffect(() => {
     // Filters the deck of cards based off of the specific deck id associated 
@@ -41,7 +44,15 @@ function App() {
       }
     })
     setFilteredDeck(tempFilteredCards);
-  }, [collectionId, deck])
+  }, [collectionId, deck, cardAdded, collectionAdded])
+
+  const cardDidMount = () =>{
+    setCardAdded(!cardAdded)
+  }
+
+  const collectionDidMount = () => {
+    setCollectionAdded(!collectionAdded)
+  }
 
 
   return (
@@ -50,10 +61,10 @@ function App() {
       <div className="container-fluid">
         <div className="row">
           <div className="col col-sm-2 col-md-2 col-lg-2">
-            <CollectionList collections={collections} setIndex={setIndex} setCollectionId={setCollectionId} setIsCollectionClicked={setIsCollectionClicked}  />
+            <CollectionList collectionDidMount={collectionDidMount} collections={collections} setIndex={setIndex} setCollectionId={setCollectionId} setIsCollectionClicked={setIsCollectionClicked}  />
           </div>
           <div className="col col-sm-10 col-md-10 col-lg-10">
-            {isCollectionClicked ? <FlashcardList filteredDeck={filteredDeck} setDeck={setDeck} setIndex={setIndex} index={index} deck={deck} /> : <></> }
+            {isCollectionClicked ? <FlashcardList cardDidMount={cardDidMount} filteredDeck={filteredDeck} setDeck={setDeck} setIndex={setIndex} index={index} deck={deck} /> : <></> }
           </div>
         </div>
       </div>

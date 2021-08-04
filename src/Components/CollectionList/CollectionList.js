@@ -23,7 +23,7 @@ const CollectionList = (props) => {
         Add a Collection
         </button>
         {
-          addCollectionClicked ? <AddACollection addCollectionClicked={addCollectionClicked} setAddCollectionClicked={setAddCollectionClicked} /> : <></>
+          addCollectionClicked ? <AddACollection collectionDidMount={props.collectionDidMount} addCollectionClicked={addCollectionClicked} setAddCollectionClicked={setAddCollectionClicked} /> : <></>
         }
       </div>
       </>

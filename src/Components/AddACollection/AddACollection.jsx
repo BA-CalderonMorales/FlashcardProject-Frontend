@@ -15,6 +15,7 @@ const AddACollection = (props) => {
     values.name = ''
     values.likes = 0
     values.deck = 0
+    props.collectionDidMount()
     props.setAddCollectionClicked(false);
     console.log("Card added.");
     console.log(`Confirmation: ${values.name}`)

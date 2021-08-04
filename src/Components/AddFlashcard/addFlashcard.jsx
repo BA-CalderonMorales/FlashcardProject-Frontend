@@ -12,6 +12,7 @@ export default function AddFlashcard(props) {
         values.back_content = ''
         values.deck = ''
         props.setAddButtonClicked(false);
+        props.cardDidMount()
         console.log("Card added.");
         console.log(`Confirmation: ${values.front_content}`)
         console.log(`Confirmation: ${values.back_content}`)

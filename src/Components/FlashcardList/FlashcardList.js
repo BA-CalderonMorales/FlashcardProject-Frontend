@@ -1,8 +1,15 @@
 import React from 'react'
+import DefaultFlashcard from '../DefaultFlashcard/DefaultFlashcard';
 import Flashcard from '../Flashcard/Flashcard';
 import './FlashcardList.css'
 
-const FlashcardList = ({filteredDeck, index, setIndex}) => {
+const FlashcardList = ({filteredDeck, index, setIndex, cardDidMount}) => {
+
+    const DefaultCard= {
+        front_content: "test",
+        back_content: "hello",
+        deck: 3
+    }
 
     const previousClicked = () => {
         // Allows a user to go to the previous flashcard in a collection of flashcards.
@@ -42,9 +49,9 @@ const FlashcardList = ({filteredDeck, index, setIndex}) => {
                     </div>
                     <div className="col col-sm-12 col-md-8 col-lg-8 " >
                         {
-                            filteredDeck.length == 0 ? <></> :
+                            filteredDeck.length == 0 ? <DefaultFlashcard cardDidMount={cardDidMount} card={DefaultCard}/> :
                             <div>
-                                <Flashcard card={currentCard} index={index} amountOfCards={filteredDeck.length} key={currentCard.id} />
+                                <Flashcard cardDidMount={cardDidMount} card={currentCard} index={index} amountOfCards={filteredDeck.length} key={currentCard.id} />
                             </div>
                         }
                     </div>

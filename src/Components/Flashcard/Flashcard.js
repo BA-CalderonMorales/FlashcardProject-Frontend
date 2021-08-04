@@ -3,7 +3,7 @@ import UpdateFlashcard from '../UpdateFlashcard/UpdateFlashcard';
 import AddFlashcard from '../AddFlashcard/addFlashcard';
 import './Flashcard.css'
 
-const Flashcard = ({card, index, amountOfCards}) => {
+const Flashcard = ({card, index, amountOfCards, cardDidMount}) => {
 
     // 
     const [addButtonClicked, setAddButtonClicked] = useState(false);
@@ -46,7 +46,7 @@ const Flashcard = ({card, index, amountOfCards}) => {
                 {addButtonClicked ? <></> : <button className="btn btn-primary" onClick={() => setAddButtonClicked(true)}>
                     Add a Card
                 </button>}
-                {addButtonClicked ? <AddFlashcard addButtonClicked={addButtonClicked} setAddButtonClicked={setAddButtonClicked} /> : <> </> }
+                {addButtonClicked ? <AddFlashcard cardDidMount={cardDidMount} addButtonClicked={addButtonClicked} setAddButtonClicked={setAddButtonClicked} /> : <> </> }
 
                 {editButtonClicked ? <></> : <button className="btn btn-primary" onClick={() => setEditButtonClicked(true)}>
                     Edit
