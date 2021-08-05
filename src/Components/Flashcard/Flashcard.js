@@ -17,45 +17,30 @@ const Flashcard = ({card, index, amountOfCards, cardDidMount}) => {
 
     return ( 
         <>
-        <div className="row">
-            <div className="col-12 d-flex justify-content-center">
-                <div className={ `flashcard ${flip ? 'flip' : '' }` } 
-                onClick={ () => setFlip(!flip)} 
-                >
-                    {flip ? 
-                        <div className="random"> 
-                            <div id="back" >
-                                { card.back_content }
-                                
-                            </div>
-                            <div className="index" >{index + 1}/{amountOfCards}</div>
-                        </div>
-                    :
-                    <div className="random"> 
-                        <div id="front" >
-                            { card.front_content }
-                        </div>
-                        <div className="index" >{index + 1}/{amountOfCards}</div>
-                    </div>
-                    }    
-                </div>
-            </div>
-        </div>
-        <div className="row p-2">
-            <div className="col-6">
-                {addButtonClicked ? <></> : <button className="btn btn-primary" onClick={() => setAddButtonClicked(true)}>
-                    Add a Card
+            <div className="col-6 d-flex justify-content-center align-items-center p-2">
+                {addButtonClicked ? <></> : <button className="btn btn-success" id="function-btn" onClick={() => setAddButtonClicked(true)}>
+                    <i class="fas fa-plus"></i>
                 </button>}
                 {addButtonClicked ? <AddFlashcard deckId={card.deck} cardDidMount={cardDidMount} addButtonClicked={addButtonClicked} setAddButtonClicked={setAddButtonClicked} /> : <> </> }
-
-                {editButtonClicked ? <></> : <button className="btn btn-primary" onClick={() => setEditButtonClicked(true)}>
-                    Edit
+            </div>
+            <div className="col-6 d-flex justify-content-center align-items-center p-2">
+                {editButtonClicked ? <></> : <button className="btn btn-success" id="function-btn" onClick={() => setEditButtonClicked(true)}>
+                    <i class="fas fa-edit"></i>
                 </button>}
                 {editButtonClicked ? <UpdateFlashcard deckId={card.deck} cardDidMount={cardDidMount} card_id={card.id} editButtonClicked={editButtonClicked} setEditButtonClicked={setEditButtonClicked} /> : <> </>}
             </div>
-            <div className="col-6"></div>
-        </div>
-        
+            {
+                flip ? 
+                    <div className={`flashcard ${flip ? 'front' : ''}`} onClick={ () => setFlip(!flip)}> 
+                        { card.back_content }
+                        <div className="index" >{index + 1}/{amountOfCards}</div>
+                    </div>
+                :
+                    <div className={`flashcard ${!flip ? 'back' : ''}`} onClick={ () => setFlip(!flip)}> 
+                        { card.front_content }
+                        <div className="index" >{index + 1}/{amountOfCards}</div>
+                    </div>
+            } 
         </>  
     );
 }

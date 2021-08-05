@@ -36,37 +36,22 @@ const FlashcardList = ({filteredDeck, index, setIndex, cardDidMount, collectionI
 
     return ( 
         <>
-            <div className="container-fluid" >
-                <div className="row">
-                    <div className="col col-sm-12 col-md-2 col-lg-2 d-flex justify-content-center align-items center">
-                        <div className="row" >
-                            <div className="col">
-                                <div id="previous">
-                                <button type="button" onClick={() => previousClicked()}>Previous</button>
-                                </div>
-                            </div>
+            <div className="col-12 p-2" id="displayed-flashcard" >
+                {
+                    filteredDeck.length == 0 ? <DefaultFlashcard cardDidMount={cardDidMount} card={DefaultCard}/> :
+                    <>
+                    <div className="row">
+                        <Flashcard cardDidMount={cardDidMount} card={currentCard} index={index} amountOfCards={filteredDeck.length} key={currentCard.id} />
+                        <div className="col-6 d-flex justify-content-center p-2">
+                            <button type="button" className="btn btn-dark" id="left-button" onClick={() => previousClicked()}><i class="fas fa-chevron-left"></i></button>
+                        </div>
+                        <div className="col-6 d-flex justify-content-center p-2">
+                            <button type="button" className="btn btn-dark" id="right-button" onClick={() => nextClicked()}><i class="fas fa-chevron-right"></i></button>
                         </div>
                     </div>
-                    <div className="col col-sm-12 col-md-8 col-lg-8 " >
-                        {
-                            filteredDeck.length == 0 ? <DefaultFlashcard cardDidMount={cardDidMount} card={DefaultCard}/> :
-                            <div>
-                                <Flashcard cardDidMount={cardDidMount} card={currentCard} index={index} amountOfCards={filteredDeck.length} key={currentCard.id} />
-                            </div>
-                        }
-                    </div>
-                    <div className="col col-sm-12 col-md-2 col-lg-2 d-flex justify-content-center align-items center">
-                        <div className="row" >
-                            <div className="col">
-                                <div id="next">
-                                    <button type="button" onClick={() => nextClicked()}>Next</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </>
+                }
             </div>
-            
         </>
     );
 }

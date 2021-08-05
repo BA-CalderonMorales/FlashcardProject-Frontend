@@ -7,16 +7,17 @@ const AddACollection = (props) => {
     
     // Destructuring useForm to only use what's needed from it.
     // values holds all the values from the form used in this rendered form. 
-    const { values, handleChange, handleSubmit } = useForm(collection_updated);
+    const { values, handleChange, handleSubmit } = useForm(collection_added);
 
-    function collection_updated() {
+    function collection_added() {
     // Updates a flashcard in the database. Used in conjunction with useForm.
     axios.post(`http://127.0.0.1:8000/all_decks/`, values)
     values.name = ''
     values.likes = 0
     values.deck = 0
-    props.collectionDidMount()
+    props.collectionDidMount() 
     props.setAddCollectionClicked(false);
+    props.buttonLocationDidMount();
     console.log("Card added.");
     console.log(`Confirmation: ${values.name}`)
     console.log(`Confirmation: ${values.likes}`)

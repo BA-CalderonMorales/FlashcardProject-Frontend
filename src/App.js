@@ -3,6 +3,7 @@ import CollectionList from './Components/CollectionList/CollectionList';
 import './App.css';
 import FlashcardList from './Components/FlashcardList/FlashcardList';
 import Header from './Components/Header/Header';
+import Title from './Components/Title/Title';
 import axios from 'axios';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   const [isCollectionClicked, setIsCollectionClicked] = useState(false);
   const [cardAdded, setCardAdded] = useState(false);
   const [collectionAdded, setCollectionAdded] = useState(false);
+  const [buttonLocation, setButtonLocation] = useState(false);
 
   useEffect(() => {
     // Retrieves all the collections in the Flashcard Collection API database.
@@ -44,27 +46,43 @@ function App() {
       }
     })
     setFilteredDeck(tempFilteredCards);
-  }, [collectionId, deck, cardAdded, collectionAdded])
+  }, [collectionId, deck, cardAdded, collectionAdded, buttonLocation]);
 
   const cardDidMount = () =>{
-    setCardAdded(!cardAdded)
+    setCardAdded(!cardAdded);
   }
 
   const collectionDidMount = () => {
-    setCollectionAdded(!collectionAdded)
+    setCollectionAdded(!collectionAdded);
   }
 
+  const buttonLocationDidMount = () => {
+    setButtonLocation(!buttonLocation);
+  }
 
   return (
     <>
       <Header />
       <div className="container-fluid">
-        <div className="row">
-          <div className="col col-sm-2 col-md-2 col-lg-2">
-            <CollectionList collectionDidMount={collectionDidMount} collections={collections} setIndex={setIndex} setCollectionId={setCollectionId} setIsCollectionClicked={setIsCollectionClicked}  />
+        <div className="row p-2">
+          <div className="col-12 d-flex justify-content-center">
+            <Title />
           </div>
-          <div className="col col-sm-10 col-md-10 col-lg-10">
-            {isCollectionClicked ? <FlashcardList collectionId={collectionId} cardDidMount={cardDidMount} filteredDeck={filteredDeck} setDeck={setDeck} setIndex={setIndex} index={index} deck={deck} /> : <></> }
+        </div>
+        <div className="row justify-content-center" id="main-display">
+        {isCollectionClicked ? 
+          <div className="col-12 col-md-6 d-flex justify-content-center">
+             <FlashcardList collectionId={collectionId} cardDidMount={cardDidMount} filteredDeck={filteredDeck} setDeck={setDeck} setIndex={setIndex} index={index} deck={deck} />
+          </div> : <></> }
+          <div className="col-12 col-md-6 d-flex justify-content-center align-items-center">
+            <div className="row">
+              <CollectionList collectionDidMount={collectionDidMount} 
+              collections={collections} setIndex={setIndex} 
+              setCollectionId={setCollectionId} 
+              setIsCollectionClicked={setIsCollectionClicked}
+              buttonLocation={buttonLocation}  
+              buttonLocationDidMount={buttonLocationDidMount} />
+            </div>
           </div>
         </div>
       </div>

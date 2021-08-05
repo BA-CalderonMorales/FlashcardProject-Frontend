@@ -1,14 +1,28 @@
-.collection-list {
-    display: block;
+#collection-list {
+    display: flex;
     position: relative;
-    height: 35rem;
-    width: 15rem;
+    height: 22rem;
+    width: 16rem;
+    padding: .75rem;
+    background-color: rgb(49, 47, 47);
     overflow:scroll;
     overflow-x:hidden;
+    border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    scroll-snap-type: y mandatory;
+}
+
+#collection-list::-webkit-scrollbar {
+    display: none;
 }
 
 .add-collection {
     position: relative;
     height: auto;
     width: 40rem;
+}
+
+#main-display {
+    margin-top: 2rem;
 }

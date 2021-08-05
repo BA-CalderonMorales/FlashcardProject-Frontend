@@ -1,9 +1,13 @@
-
-
-#previous {
-  padding-top: 10rem;
+#displayed-flashcard {
+  display: flex;
+  flex-flow: column;
+  width: 75%;
 }
 
-#next {
-  padding-top: 10rem;
+#left-button {
+  width: 25%;
+}
+
+#right-button {
+  width: 25%;
 }
